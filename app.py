@@ -65,13 +65,13 @@ if dataset_choice == "Sales Data (sales_data.csv)":
     st.subheader("📊 Sales Insights")
     
     avg_by_productline = (
-        filtered_data.groupby("PRODUCTLINE")["SALES"].mean().reset_index().sort_values("SALES", ascending=False).head(5)
+        filtered_data.groupby("PRODUCTLINE")["SALES"].sum().reset_index().sort_values("SALES", ascending=False).head(5)
     )
     avg_by_city = (
-        filtered_data.groupby("CITY")["SALES"].mean().reset_index().sort_values("SALES", ascending=False).head(5)
+        filtered_data.groupby("CITY")["SALES"].sum().reset_index().sort_values("SALES", ascending=False).head(5)
     )
     avg_by_country = (
-        filtered_data.groupby("COUNTRY")["SALES"].mean().reset_index().sort_values("SALES", ascending=False).head(5)
+        filtered_data.groupby("COUNTRY")["SALES"].sum().reset_index().sort_values("SALES", ascending=False).head(5)
     )
     
     col1, col2, col3 = st.columns(3)
