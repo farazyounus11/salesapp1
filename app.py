@@ -63,7 +63,7 @@ if dataset_choice == "Sales Data (sales_data.csv)":
 
     # --- Average Sales by Product Line / City / Country ---
     st.subheader("📊 Average Sales Insights")
-
+    
     avg_by_productline = (
         filtered_data.groupby("PRODUCTLINE")["SALES"].mean().reset_index().sort_values("SALES", ascending=False).head(3)
     )
@@ -73,23 +73,33 @@ if dataset_choice == "Sales Data (sales_data.csv)":
     avg_by_country = (
         filtered_data.groupby("COUNTRY")["SALES"].mean().reset_index().sort_values("SALES", ascending=False).head(3)
     )
-
+    
     col1, col2, col3 = st.columns(3)
-
+    
     with col1:
         st.markdown("**Top Avg Sales by Product Line**")
+        # Create table with product line on left, sales on right
+        table_data = []
         for _, row in avg_by_productline.iterrows():
-            st.metric(row["PRODUCTLINE"], f"{row['SALES']:,.2f}")
-
+            table_data.append([row["PRODUCTLINE"], f"{row['SALES']:,.2f}"])
+        st.table(pd.DataFrame(table_data, columns=["Product Line", "Sales"]))
+    
     with col2:
         st.markdown("**Top Avg Sales by City**")
+        table_data = []
         for _, row in avg_by_city.iterrows():
-            st.metric(row["CITY"], f"{row['SALES']:,.2f}")
-
+            table_data.append([row["CITY"], f"{row['SALES']:,.2f}"])
+        st.table(pd.DataFrame(table_data, columns=["City", "Sales"]))
+    
     with col3:
         st.markdown("**Top Avg Sales by Country**")
+        table_data = []
         for _, row in avg_by_country.iterrows():
-            st.metric(row["COUNTRY"], f"{row['SALES']:,.2f}")
+            table_data.append([row["COUNTRY"], f"{row['SALES']:,.2f}"])
+        st.table(pd.DataFrame(table_data, columns=["Country", "Sales"]))
+
+
+
     
     st.subheader("Largest Deal Size Analysis")
 
