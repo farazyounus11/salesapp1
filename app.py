@@ -4,7 +4,7 @@ import plotly.express as px
 import pydeck as pdk
 
 st.set_page_config(page_title="Multi Dataset Dashboard", layout="wide")
-st.title("📊 Multi-Dataset E-commerce Dashboard")
+st.title("📊 Multi-Dataset E-commerce Dashboard by Faraz Younus")
 
 # --- Sidebar selector ---
 dataset_choice = st.sidebar.radio(
