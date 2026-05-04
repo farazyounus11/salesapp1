@@ -77,7 +77,7 @@ if dataset_choice == "Sales Data (sales_data.csv)":
     col1, col2, col3 = st.columns(3)
     
     with col1:
-        st.markdown("*Top Product Lines*")
+        st.markdown("**Top Product Lines**")
         # Create table with product line on left, sales on right
         table_data = []
         for _, row in avg_by_productline.iterrows():
@@ -85,14 +85,14 @@ if dataset_choice == "Sales Data (sales_data.csv)":
         st.table(pd.DataFrame(table_data, columns=["Product Line", "Sales"]))
     
     with col2:
-        st.markdown("*Top Cities*")
+        st.markdown("**Top Cities**")
         table_data = []
         for _, row in avg_by_city.iterrows():
             table_data.append([row["CITY"], f"{row['SALES']:,.2f}"])
         st.table(pd.DataFrame(table_data, columns=["City", "Sales"]))
     
     with col3:
-        st.markdown("*Top Countries*")
+        st.markdown("**Top Countries**")
         table_data = []
         for _, row in avg_by_country.iterrows():
             table_data.append([row["COUNTRY"], f"{row['SALES']:,.2f}"])
